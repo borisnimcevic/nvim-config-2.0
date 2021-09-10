@@ -73,7 +73,22 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
+" LSP
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
+" Inserting comments
+Plug 'tpope/vim-commentary'
+" Highlight what you've just yanked
+Plug 'machakann/vim-highlightedyank'
 call plug#end()
+
+" LSP stuff
+lua << EOF
+require'lspconfig'.clangd.setup {
+    on_attach = on_attach,
+    root_dir = function() return vim.loop.cwd() end
+}
+EOF
 
 " COLOR STUFF
 colorscheme gruvbox
@@ -128,3 +143,6 @@ nnoremap <Leader>pf :lua require('telescope.builtin').find_files()<CR>
 nnoremap <leader>pw :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
 nnoremap <leader>pb :lua require('telescope.builtin').buffers()<CR>
 nnoremap <leader>vh :lua require('telescope.builtin').help_tags()<CR>
+
+" Highlight-Yank settings
+let g:highlightedyank_highlight_duration = 300
