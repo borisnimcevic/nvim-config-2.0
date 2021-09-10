@@ -80,6 +80,8 @@ Plug 'hrsh7th/nvim-compe'
 Plug 'tpope/vim-commentary'
 " Highlight what you've just yanked
 Plug 'machakann/vim-highlightedyank'
+" Navigation
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 " LSP stuff
